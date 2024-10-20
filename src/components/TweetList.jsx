@@ -3,12 +3,12 @@ import Tweet from "./Tweet";
 const TweetList = ({ tweets }) => {
   return (
     <ul>
-      {tweets?.map((tweet) => {
+      {tweets?.map((tweet, id) => {
         return (
-          <li>
+          <li key={id}>
             <Tweet
               tweetContent={tweet?.content}
-              likedCount={tweet?.likedCount}
+              likedCount={tweet?.likedCounts}
             />
           </li>
         );
