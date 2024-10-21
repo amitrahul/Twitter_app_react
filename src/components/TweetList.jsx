@@ -10,6 +10,7 @@ const TweetList = ({ tweets }) => {
             <Tweet
               tweetContent={tweet?.content}
               likedCount={tweet?.likedCounts}
+              createdAt={tweet?.createdAt?.toString()}
             />
           </li>
         );

@@ -4,7 +4,13 @@
   width: 600px;
 }
 
-.tweet-liked {
+.created_liked_tweet_Wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.tweet-liked,
+.createdTime {
   font-size: smaller;
   color: rebeccapurple;
 }

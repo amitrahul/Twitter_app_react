@@ -7,16 +7,19 @@ const initialDummyTweets = [
     id: 0,
     content: "we have a new twitter called threads",
     likedCounts: 3,
+    createdAt: new Date(),
   },
   {
     id: 1,
     content: "we should we post",
     likedCounts: 13,
+    createdAt: new Date(),
   },
   {
     id: 2,
     content: "what is up with tech community",
     likedCounts: 23,
+    createdAt: new Date(),
   },
 ];
 
@@ -31,6 +34,7 @@ function Twitter() {
         id: nextId,
         content: tweetValue,
         likedCounts: Math.floor(Math.random() * 10 + 1),
+        createdAt: new Date(),
       },
     ]);
   };
