@@ -21,3 +21,16 @@
   font-weight: 500;
   color: cadetblue;
 }
+
+.tweetContent_wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.editBtn button {
+  border: none;
+  padding: 0.5rem;
+
+  &:hover {
+    background-color: greenyellow;
+  }
+}
