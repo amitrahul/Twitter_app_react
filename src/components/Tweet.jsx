@@ -22,7 +22,7 @@ const Tweet = ({ tweetContent, likedCount, createdAt, onEdit, tweetId }) => {
         </div>
         <div className="editBtn">
           <button onClick={handleEditTweet}>
-            {(isEditting && "Edit") || "Save"}
+            {(isEditting && "Save") || "Edit"}
           </button>
         </div>
       </div>
