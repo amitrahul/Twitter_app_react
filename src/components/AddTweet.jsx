@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddTweet = ({ onAddTweet }) => {
   const [text, setText] = useState("");
   return (
     <>
+      <ToastContainer position="top-center" />
       <input
         placeholder="add new tweet...."
         value={text}
@@ -11,8 +14,12 @@ const AddTweet = ({ onAddTweet }) => {
       />
       <button
         onClick={() => {
-          onAddTweet(text);
-          setText("");
+          if (text) {
+            onAddTweet(text);
+            setText("");
+          } else {
+            toast.warning("Please write tweet content");
+          }
         }}
       >
         Tweet !!
