@@ -38,10 +38,17 @@ function Twitter() {
       },
     ]);
   };
+
+  const handleEditTweet = (newTweet) => {
+    const updatedTweetList = tweets.map((currentTweet) => {
+      return currentTweet?.id === newTweet?.id ? newTweet : currentTweet;
+    });
+    setTweets(updatedTweetList);
+  };
   return (
     <>
       <AddTweet onAddTweet={handleAddTweet} />
-      <TweetList tweets={tweets} />
+      <TweetList tweets={tweets} onEditTweet={handleEditTweet} />
     </>
   );
 }

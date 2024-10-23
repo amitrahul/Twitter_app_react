@@ -1,7 +1,7 @@
 import Tweet from "./Tweet";
 import "../Css/TweetList.css";
 
-const TweetList = ({ tweets }) => {
+const TweetList = ({ tweets, onEditTweet }) => {
   return (
     <ul className="tweetList_wrapper">
       {tweets?.map((tweet) => {
@@ -11,6 +11,8 @@ const TweetList = ({ tweets }) => {
               tweetContent={tweet?.content}
               likedCount={tweet?.likedCounts}
               createdAt={tweet?.createdAt?.toString()}
+              onEdit={onEditTweet}
+              tweetId={tweet?.id}
             />
           </li>
         );
