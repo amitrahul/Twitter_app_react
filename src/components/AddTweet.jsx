@@ -6,7 +6,7 @@ const AddTweet = ({ onAddTweet }) => {
   const [text, setText] = useState("");
   return (
     <>
-      <ToastContainer position="top-center" />
+      <ToastContainer position="top-center" autoClose={1000} />
       <input
         placeholder="add new tweet...."
         value={text}
