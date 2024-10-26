@@ -10,7 +10,13 @@ const Tweet = ({ tweetContent, likedCount, createdAt, onEdit, tweetId }) => {
       id: tweetId,
       content: e.target.value,
       likedCounts: likedCount,
-      createdAt: createdAt,
+      createdAt: new Date(createdAt),
+      /** if we use :-
+       * 1. createdAt: new Date(), :- then it always gives me updated time in date format.
+       *
+       *2. createdAt: new Date(createdAt), :- then it always gives me previous dates only.
+       */
+      // createdAt: new Date(),
     });
   };
   return (

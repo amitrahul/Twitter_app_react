@@ -1,4 +1,4 @@
-import { useState, useCallback, memo } from "react";
+import { memo, useCallback, useState } from "react";
 import AddTweet from "./AddTweet";
 import TweetList from "./TweetList";
 
@@ -22,34 +22,46 @@ const initialDummyTweets = [
     createdAt: new Date(),
   },
 ];
-
 function Twitter() {
   const [tweets, setTweets] = useState(initialDummyTweets);
   const MemoisedAddTweet = memo(AddTweet);
-  const handleAddTweet = useCallback((tweetValue) => {
-    let nextId = tweets?.length > 0 ? tweets[tweets.length - 1].id + 1 : 0;
-    setTweets((prevTweets) => [
-      ...prevTweets,
-      {
-        id: nextId,
-        content: tweetValue,
-        likedCounts: Math.floor(Math.random() * 10 + 1),
-        createdAt: new Date(),
-      },
-    ]);
-  }, []);
 
-  const handleEditTweet = useCallback((newTweet) => {
-    /**
-     * Here map is giving new array so directly update the setTweets with updatedTweetList.
-     * no need to destructured in a new array.
-     */
-    const updatedTweetList = tweets.map((currentTweet) => {
-      return currentTweet?.id === newTweet?.id ? newTweet : currentTweet;
-    });
-    setTweets(updatedTweetList);
-  });
+  const handleAddTweet = useCallback(
+    (tweetValue) => {
+      let nextId =
+        tweets?.length > 0
+          ? tweets[tweets.length - 1].id + Math.floor(Math.random() * 100 + 1)
+          : 0;
+
+      setTweets((prevTweets) => [
+        ...prevTweets,
+        {
+          id: nextId,
+          content: tweetValue,
+          likedCounts: Math.floor(Math.random() * 10 + 1),
+          createdAt: new Date(),
+        },
+      ]);
+    },
+    [tweets]
+  );
+
+  const handleEditTweet = useCallback(
+    (newTweet) => {
+      /**
+       * Here map is giving new array so directly update the setTweets with updatedTweetList.
+       * no need to destructured in a new array.
+       */
+      const updatedTweetList = tweets.map((currentTweet) => {
+        return currentTweet?.id === newTweet?.id ? newTweet : currentTweet;
+      });
+      setTweets(updatedTweetList);
+    },
+    [tweets]
+  );
   const handleSortTweet = useCallback(() => {
+    console.log("inside sort");
+
     tweets.sort(
       (tweet1, tweet2) =>
         tweet2?.createdAt.getTime() - tweet1?.createdAt.getTime()
@@ -62,7 +74,7 @@ function Twitter() {
 
     // this will works.through this we are creating a new array.
     setTweets([...tweets]);
-  }, []);
+  }, [tweets]);
   return (
     <>
       <MemoisedAddTweet onAddTweet={handleAddTweet} />
